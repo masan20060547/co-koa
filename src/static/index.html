@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tiny Koa</title>
+    <link rel="stylesheet" href="./index.css">
+    <script>
+        const port = 3000;
+        const hostname = 'http://localhost';
+        const host = hostname + ':' + port;
+    </script>
+</head>
+<body>
+    <h1>Tiny Koa</h1>
+    <button id="fetchData">Fetch Data</button>
+    <br>
+    <a href="javascript:fetch(`${host}/api/foo/123`)">http://localhost:3000/api/foo/123</a>
+    <br>
+    <a href="javascript:fetch(`${host}/api/bar`)">http://localhost:3000/api/bar</a>
+    <br>
+    <a href="http://localhost:3000/page/tpl" target="_blank">http://localhost:3000/page/tpl</a>
+</body>
+<script src="./index.js"></script>
+<script>
+    fetchData.onclick = () => {
+        fetch(`${host}/api/fetch`, {
+            method: 'post',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                desc: 'Tiny',
+                for: 'Koa',
+            })
+        });
+    }
+</script>
+</html>
